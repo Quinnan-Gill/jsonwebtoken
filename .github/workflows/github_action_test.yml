@@ -16,6 +16,7 @@ jobs:
         echo issue post
         # cat $GITHUB_EVENT_PATH
         echo "$GITHUB_PR_NUMBER"
+        echo "https://api.github.com/repos/$GITHUB_REPOSITORY/issues/$GITHUB_PR_NUMBER/comments"
         curl \
           -X POST \
           --header 'authorization: Bearer ${{ secrets.GITHUB_TOKEN }}' \
