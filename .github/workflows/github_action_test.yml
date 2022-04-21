@@ -37,6 +37,7 @@ jobs:
         #  https://api.github.com/
 
         echo issue post
+        echo $GITHUB_EVENT_PATH
         curl -vv \
           -X POST \
           --header 'authorization: Bearer ${{ secrets.GITHUB_TOKEN }}' \
