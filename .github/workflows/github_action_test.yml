@@ -38,6 +38,7 @@ jobs:
 
         echo issue post
         cat $GITHUB_EVENT_PATH
+        echo https://api.github.com/repos/$GITHUB_REPOSITORY/issues/${{ github.event.number }}/comments
         curl \
           -X POST \
           --header 'authorization: Bearer ${{ secrets.GITHUB_TOKEN }}' \
