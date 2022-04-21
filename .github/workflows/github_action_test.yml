@@ -38,6 +38,8 @@ jobs:
 
         echo issue post
         cat $GITHUB_EVENT_PATH
+        echo "PR number = ${{ github.event.pull_request.number }}"
+        echo "PR number = ${{ env.PR_NUMBER }}"
         curl -vv \
           -X POST \
           --header 'authorization: Bearer ${{ secrets.GITHUB_TOKEN }}' \
