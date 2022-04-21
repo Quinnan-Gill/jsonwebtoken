@@ -1,5 +1,7 @@
 name: Mayhem for API
-on: [push, pull-request]
+on:
+  push:
+  workflow_dispatch:
 env:
   GITHUB_PR_NUMBER: ${{github.event.pull_request.number}}
 jobs:
