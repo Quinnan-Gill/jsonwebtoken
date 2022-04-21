@@ -12,36 +12,12 @@ jobs:
 
     - name: Test token
       run: |
-        # echo https://api.github.com/repos/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID
-        #
-        # echo action/runs
-        # curl \
-        #   --header 'authorization: Bearer ${{ secrets.GITHUB_TOKEN }}' \
-        #    https://api.github.com/repos/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID
-        #
-
-        # echo my collaborators
-        # curl -vv \
-        #   --header 'authorization: Bearer ${{ secrets.GITHUB_TOKEN }}' \
-        #    https://api.github.com/repos/$GITHUB_REPOSITORY/collaborators?per_page=100
-        #
-        # echo external run
-        # curl --header 'authorization: Bearer ${{ secrets.GITHUB_TOKEN }}' \
-        #   https://api.github.com/repos/Ross-ForAllSecure/owncast/actions/runs/2162549352
-
-        # echo other collaborators
-        # curl -vv --header 'authorization: Bearer ${{ secrets.GITHUB_TOKEN }}' \
-        #   https://api.github.com/repos/Ross-ForAllSecure/owncast/collaborators?per_page=100
-
-        #echo root
-        #curl --header 'authorization: Bearer ${{ secrets.GITHUB_TOKEN }}' \
-        #  https://api.github.com/
 
         echo issue post
         # cat $GITHUB_EVENT_PATH
         echo "$GITHUB_PR_NUMBER"
-        curl -vv \
+        curl \
           -X POST \
           --header 'authorization: Bearer ${{ secrets.GITHUB_TOKEN }}' \
-          https://api.github.com/repos/$GITHUB_REPOSITORY/pulls/$GITHUB_PR_NUMBER/comments \
+          https://api.github.com/repos/$GITHUB_REPOSITORY/issues/$GITHUB_PR_NUMBER/comments \
           -f body='Hello World!'
