@@ -8,6 +8,8 @@ jobs:
     runs-on: ubuntu-latest
     permissions: write-all
     steps:
+    env:
+      PR_NUMBER: ${{ github.event.pull_request.number }}
 
     - name: Test token
       run: |
