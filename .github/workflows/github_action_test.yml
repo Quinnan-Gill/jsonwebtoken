@@ -6,7 +6,7 @@ env:
   GITHUB_PR_NUMBER: ${{github.event.pull_request.number}}
 jobs:
 
-  prJob:
+  security:
     runs-on: ubuntu-latest
     permissions: write-all
     if: ${{ github.event_name == 'pull_request' }}
