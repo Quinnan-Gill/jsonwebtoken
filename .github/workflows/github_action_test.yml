@@ -40,8 +40,8 @@ jobs:
         echo issue post
         # cat $GITHUB_EVENT_PATH
         echo "$GITHUB_PR_NUMBER"
-        # curl -vv \
-        #   -X POST \
-        #   --header 'authorization: Bearer ${{ secrets.GITHUB_TOKEN }}' \
-        #   https://api.github.com/repos/$GITHUB_REPOSITORY/issues/${{ github.event.pull_request.number }}/comments \
-        #   -f body='Hello World!'
+        curl -vv \
+          -X POST \
+          --header 'authorization: Bearer ${{ secrets.GITHUB_TOKEN }}' \
+          https://api.github.com/repos/$GITHUB_REPOSITORY/issues/$GITHUB_PR_NUMBER/comments \
+          -f body='Hello World!'
