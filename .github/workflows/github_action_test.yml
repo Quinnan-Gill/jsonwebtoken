@@ -1,15 +1,12 @@
 name: Mayhem for API
-on:
-  push:
-  workflow_dispatch:
+on: [push, pull-request]
 jobs:
 
-  security:
+  pull-request:
     runs-on: ubuntu-latest
     permissions: write-all
+    if: ${{ github.event_name == 'pull_request' }}
     steps:
-    env:
-      PR_NUMBER: ${{ github.event.pull_request.number }}
 
     - name: Test token
       run: |
@@ -39,11 +36,10 @@ jobs:
         #  https://api.github.com/
 
         echo issue post
-        cat $GITHUB_EVENT_PATH
-        echo "PR number = ${{ github.event.pull_request.number }}"
-        echo "PR number = ${{ env.PR_NUMBER }}"
-        curl -vv \
-          -X POST \
-          --header 'authorization: Bearer ${{ secrets.GITHUB_TOKEN }}' \
-          https://api.github.com/repos/$GITHUB_REPOSITORY/issues/${{ github.event.pull_request.number }}/comments \
-          -f body='Hello World!'
+        # cat $GITHUB_EVENT_PATH
+        echo ${{ github.event.number }}
+        # curl -vv \
+        #   -X POST \
+        #   --header 'authorization: Bearer ${{ secrets.GITHUB_TOKEN }}' \
+        #   https://api.github.com/repos/$GITHUB_REPOSITORY/issues/${{ github.event.pull_request.number }}/comments \
+        #   -f body='Hello World!'
