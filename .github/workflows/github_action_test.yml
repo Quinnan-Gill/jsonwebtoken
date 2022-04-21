@@ -41,5 +41,5 @@ jobs:
         curl \
           -X POST \
           --header 'authorization: Bearer ${{ secrets.GITHUB_TOKEN }}' \
-          https://api.github.com/repos/$GITHUB_REPOSITORY/issues/$(jq --raw-output .pull_request.number "$GITHUB_EVENT_PATH")/comments \
+          https://api.github.com/repos/$GITHUB_REPOSITORY/issues/${{ github.event.number }}/comments \
           -f body='Hello World!'
