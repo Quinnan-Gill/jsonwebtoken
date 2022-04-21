@@ -1,0 +1,24 @@
+name: Mayhem for API
+on:
+  pull_request
+env:
+  GITHUB_PR_NUMBER: ${{github.event.pull_request.number}}
+jobs:
+
+  security:
+    runs-on: ubuntu-latest
+    permissions: write-all
+    steps:
+
+    - name: Test token
+      run: |
+
+        echo issue post
+        # cat $GITHUB_EVENT_PATH
+        echo "$GITHUB_PR_NUMBER"
+        echo "https://api.github.com/repos/$GITHUB_REPOSITORY/issues/$GITHUB_PR_NUMBER/comments"
+        curl \
+          -X POST \
+          --header 'authorization: Bearer ${{ secrets.GITHUB_TOKEN }}' \
+          https://api.github.com/repos/$GITHUB_REPOSITORY/issues/$GITHUB_PR_NUMBER/comments \
+          -d '{"body":"Hello World"}'
