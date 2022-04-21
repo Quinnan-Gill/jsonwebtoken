@@ -9,7 +9,6 @@ jobs:
   security:
     runs-on: ubuntu-latest
     permissions: write-all
-    if: ${{ github.event_name == 'pull_request' }}
     steps:
 
     - name: Test token
