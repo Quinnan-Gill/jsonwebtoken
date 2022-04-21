@@ -21,4 +21,4 @@ jobs:
           -X POST \
           --header 'authorization: Bearer ${{ secrets.GITHUB_TOKEN }}' \
           https://api.github.com/repos/$GITHUB_REPOSITORY/issues/$GITHUB_PR_NUMBER/comments \
-          -f body='Hello World!'
+          -d '{"body":"Hello World"}'
